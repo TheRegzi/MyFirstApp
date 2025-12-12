@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { View, Image, TouchableOpacity, Text } from 'react-native'
+import { View, Image, TouchableOpacity, Text, Dimensions } from 'react-native'
 
 const ImageCarousel = () => {
+  const screenWidth = Dimensions.get('window').width
   const [activeIndex, setActiveIndex] = useState(0)
 
   const foodItems = [
@@ -38,32 +39,33 @@ const ImageCarousel = () => {
   const getImageStyle = (index) => {
     const isCenter = index === 1
     return {
-      width: isCenter ? 180 : 100,
-      height: isCenter ? 120 : 100,
-      borderRadius: isCenter ? 20 : 15,
-      marginHorizontal: 10,
+      width: isCenter ? 140 : 100,
+      height: isCenter ? 120 : 80,
+      borderRadius: isCenter ? 15 : 10,
       shadowColor: '#000',
-      shadowOffset: { width: 0, height: isCenter ? 6 : 4 },
+      shadowOffset: { width: 0, height: isCenter ? 4 : 2 },
       shadowOpacity: isCenter ? 0.4 : 0.3,
-      shadowRadius: isCenter ? 8 : 6,
-      elevation: isCenter ? 10 : 8,
+      shadowRadius: isCenter ? 6 : 4,
+      elevation: isCenter ? 8 : 6,
     }
   }
 
   const orderedItems = getOrderedItems()
 
   return (
-    <View style={{ paddingVertical: 20, alignItems: 'center' }}>
+    <View style={{ paddingVertical: 20, alignItems: 'center', width: '100%' }}>
       <TouchableOpacity onPress={handlePress}>
         <View style={{ 
           flexDirection: 'row', 
           alignItems: 'center',
-          paddingHorizontal: 20 
+          justifyContent: 'center',
+          gap: 15,
+          width: screenWidth - 50,
         }}>
           {orderedItems.map((item, index) => {
             const isCenter = index === 1
             return (
-              <View key={index} style={{ position: 'relative', marginHorizontal: 10 }}>
+              <View key={index} style={{ position: 'relative' }}>
                 <Image
                   source={{ uri: item.image }}
                   style={getImageStyle(index)}
@@ -75,13 +77,13 @@ const ImageCarousel = () => {
                     left: 0,
                     right: 0,
                     backgroundColor: 'rgba(0,0,0,0.7)',
-                    borderBottomLeftRadius: 20,
-                    borderBottomRightRadius: 20,
-                    paddingVertical: 5,
-                    paddingHorizontal: 8,
+                    borderBottomLeftRadius: 15,
+                    borderBottomRightRadius: 15,
+                    paddingVertical: 3,
+                    paddingHorizontal: 6,
                   }}>
                     <Text style={{ 
-                      fontSize: 12, 
+                      fontSize: 14, 
                       fontWeight: 'bold', 
                       color: 'white',
                       textAlign: 'center'
@@ -89,7 +91,7 @@ const ImageCarousel = () => {
                       {item.dish}
                     </Text>
                     <Text style={{ 
-                      fontSize: 10, 
+                      fontSize: 11, 
                       color: '#ccc',
                       textAlign: 'center'
                     }}>
