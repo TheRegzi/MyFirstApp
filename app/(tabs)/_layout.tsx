@@ -1,8 +1,8 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { Colors } from '@/app/constants/theme'; // eller juster sti om du ikke bruker "@"‑alias
-import { useColorScheme } from '@/app/hooks/use-color-scheme';
-import { Ionicons } from '@expo/vector-icons'; // ✅ bruk Expo sine ikoner
+import { Colors } from '@/constants/theme'; 
+import { useColorScheme } from '@/hooks/use-color-scheme';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
