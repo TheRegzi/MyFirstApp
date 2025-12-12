@@ -1,6 +1,7 @@
 import { Text, View } from "react-native";
 import { Fonts } from '@/constants/theme';
-import { useColorScheme } from 'react-native'
+import { useColorScheme } from 'react-native';
+import ImageCarousel from '@/components/ImageCarousel';
 
 export default function Index() {
     const colorScheme = useColorScheme()
@@ -17,6 +18,7 @@ export default function Index() {
     >
       <Text style={{ fontFamily: Fonts.bold, fontSize: 25, color: colorScheme === 'dark' ? '#fff' : '#000', marginBottom: 10 }}>Good afternoon!</Text>
       <Text style={{ fontFamily: Fonts.regular, color: colorScheme === 'dark' ? '#fff' : '#000'  }}>Looking for something tasty?</Text>
+    <ImageCarousel />
     </View>
   );
 }
